@@ -8,12 +8,13 @@ import YouTube from "react-youtube";
 let teams = ["turquoise", "yellow", "pink"];
 
 let persons = [
+  { team: "yellow", name: "Torkjell", competition: "Ddakji", poeng: "5/-5" },
   { team: "blue", name: "Marius", competition: "Singstar", poeng: "10" },
   { team: "pink", name: "Hanne", competition: "Opius", poeng: "-10" },
   { team: "yellow", name: "Anders", competition: "Confidence", poeng: "-2" },
   { team: "pink", name: "Julia", competition: "Vodka eller vann", poeng: "2" },
   { team: "pink", name: "Anniken", competition: "Ring of fire", poeng: "-10" },
-  { team: "blue", name: "Hedvig", competition: "Veddeløp", poeng: "5" },
+  { team: "blue", name: "Hedvig", competition: "Veddeløp", poeng: "7" },
   { team: "yellow", name: "Øyvind", competition: "Breezerrace", poeng: "7" },
   {
     team: "yellow",

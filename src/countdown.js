@@ -41,7 +41,7 @@ export default function Countdown() {
           {renderTime}
       </CountdownCircleTimer>}
       <br />
-      <button className="button" onClick={() => setduration(10)}>
+      <button className="button" onClick={() => setduration(300)}>
         {" "}
         5 Min countdown{" "}
       </button>
@@ -49,7 +49,7 @@ export default function Countdown() {
         className="button"
         onClick={() =>
           setduration(
-            (Date.now() - new Date("October 16, 20 17:20:00 GMT+02:00")) / 1000
+            (new Date("Sun Oct 16 2021 18:20:00 GMT+0200")-Date.now())/ 100000
           )
         }
       >
