@@ -191,3 +191,30 @@ h1 {
   text-align: center;
   margin-top: 40px;
 }
+
+.cover{
+  position: fixed;
+  background-color: black;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+}
+
+.coverContent{
+  margin: auto;
+  margin-top:20vh;
+}
+
+.coverContent > img{
+  width: 30vw;
+}
+
+.coverTime{
+  position: fixed;
+  bottom: 0px;
+}
+
+#introtekst{
+  color: white;
+  font-size: 40px;
+}

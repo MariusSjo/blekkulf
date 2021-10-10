@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "./card.js";
 import Points from "./points";
 import Countdown from "./countdown.js";
+import Cover from "./cover.js";
 import "./App.css";
 import YouTube from "react-youtube";
 
@@ -42,9 +43,16 @@ const opts = {
 };
 
 function App() {
+  const [hideGame, setHideGame] = useState(1)
   const [reveal, setreveal] = useState(0);
   return (
     <div className="App">
+         { hideGame && <div className="cover">
+            <div onClick={()=>{setHideGame("")}} className="coverContent">
+            <Cover/>
+            </div>
+          </div>}
+          
           <div className="points">
           {teams.map((team) => (
             <Points team={team} />
@@ -60,7 +68,7 @@ function App() {
           <Card key={person.name} person={person} reveal={reveal} />
         ))}    
       </div>
-      <div style={{position: "fixed"}}><YouTube classname="youtube" videoId="v9NQYKv2rTg" opts={opts} /></div>
+      {!hideGame && <div style={{position: "fixed"}}><YouTube classname="youtube" videoId="v9NQYKv2rTg" opts={opts} /></div>}
     </div>
   );
 }
