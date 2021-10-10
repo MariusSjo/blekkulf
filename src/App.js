@@ -1,38 +1,66 @@
-import logo from './logo.svg';
-import Card from './card.js'
-import './App.css';
+import React, { useState } from "react";
+import Card from "./card.js";
+import Points from "./points";
+import Countdown from "./countdown.js";
+import "./App.css";
+import YouTube from "react-youtube";
 
-let persons = [{name: 'Marius',competition:'Singstar', misc:'Lets gooo!'}, 
-                {name: 'Julia', competition:'Vodka eller vann', misc:'Kjæreste av hosten <3'},
-                {name: 'Anders', competition:'?', misc:'Kjæreste av hosten <3'},
-                {name: 'Anniken', competition:'?', misc:' <3'},
-                {name: 'Hedvig', competition:'?', misc:'Har sagt at hun skal gå på tur med bursdagsbarnet, men gjør det aldri'},
-                {name: 'Øyvind', competition:'Breezerrace', misc:'Elsker å kalle folk for søringer'},
-                {name: 'Sara', competition:'Vodka eller vann', misc:'En veldig snill vegetarianer'},
-                {name: 'Sander', competition:'Vodka eller vann', misc:'Kjæreste av hosten <3'},
-                {name: 'Thomas', competition:'Tekken', misc:'Kjæreste av hosten <3'},
-                {name: 'Gina', competition:'Vodka eller vann', misc:'Kjæreste av hosten <3'},
-                {name: 'Hanne', competition:'Vodka eller vann', misc:'Kjæreste av hosten <3'}]
+let teams = ["turquoise", "yellow", "pink"];
+
+let persons = [
+  { team: "blue", name: "Marius", competition: "Singstar", poeng: "10" },
+  { team: "pink", name: "Hanne", competition: "Opius", poeng: "-10" },
+  { team: "yellow", name: "Anders", competition: "Confidence", poeng: "-2" },
+  { team: "pink", name: "Julia", competition: "Vodka eller vann", poeng: "2" },
+  { team: "pink", name: "Anniken", competition: "Ring of fire", poeng: "-10" },
+  { team: "blue", name: "Hedvig", competition: "Veddeløp", poeng: "5" },
+  { team: "yellow", name: "Øyvind", competition: "Breezerrace", poeng: "7" },
+  {
+    team: "yellow",
+    name: "Sara",
+    competition: "Glassbro/bussrute",
+    poeng: "5/-3",
+  },
+  { team: "blue", name: "Sander", competition: "Sukkerkjeks", poeng: "10/-5" },
+  { team: "blue", name: "Thomas", competition: "Terningspill", poeng: "5" },
+  { team: "yellow", name: "Gina", competition: "Baby freeze", poeng: "10" },
+  {
+    team: "pink",
+    name: "MrBursdag",
+    competition: "Flip the cup",
+    poeng: "10",
+  },
+];
+
+const opts = {
+  height: "20",
+  width: "20",
+  playerVars: {
+    autoplay: 1,
+  },
+};
 
 function App() {
+  const [reveal, setreveal] = useState(0);
   return (
-    <div className="App" style={{ /* backgroundImage: "url(/img/background.jpeg)" */ background: "rgb(0,212,255)",
-    background: "linear-gradient(90deg, rgba(0,212,255,1) 25%, rgba(250,248,99,1) 50%, rgba(255,2,245,1) 75%)", height: "100vh" }}>
+    <div className="App">
+          <div className="points">
+          {teams.map((team) => (
+            <Points team={team} />
+          ))}
+          </div>
+          <Countdown/>
       <header className="App-header">
-      <img src="img/poengbakgrunn.png"></img>
+        <img id="poengbakgrunn" src="img/poengbakgrunn.png" alt="scetchy"></img>
       </header>
+      {!reveal && <button className="button" onClick={() => setreveal(1)}>Avslør lagene!</button>}
       <div className="cardContainer">
-      {persons.map(person => <Card key={person.name} person={person} className="card"/>)}
+        {persons.map((person) => (
+          <Card key={person.name} person={person} reveal={reveal} />
+        ))}    
       </div>
-      <div className="points">
-        <iframe src={`https://www.youtube.com/watch?v=LhjhlnyxG1Q`}
-          frameborder='0'
-          allow='autoplay; encrypted-media'
-          allowfullscreen
-          title='video'
-  />
-      </div>
-      </div>
+      <div style={{position: "fixed"}}><YouTube classname="youtube" videoId="v9NQYKv2rTg" opts={opts} /></div>
+    </div>
   );
 }
 
