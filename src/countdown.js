@@ -11,7 +11,7 @@ export default function Countdown() {
 
   const renderTime = ({ remainingTime }) => {
     if (remainingTime === 0) {
-      return <div className="timer">Too lale...</div>;
+      return <div className="timer">Too late...</div>;
     }
   
     return (
@@ -29,7 +29,6 @@ export default function Countdown() {
       {duration && <CountdownCircleTimer
         onComplete={() => {
             audio.play()
-            return [true, 1500] // repeat animation in 1.5 seconds
         }}
         isPlaying
         duration={duration}
@@ -42,7 +41,7 @@ export default function Countdown() {
           {renderTime}
       </CountdownCircleTimer>}
       <br />
-      <button className="button" onClick={() => setduration(300)}>
+      <button className="button" onClick={() => setduration(10)}>
         {" "}
         5 Min countdown{" "}
       </button>
