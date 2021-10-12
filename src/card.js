@@ -37,7 +37,7 @@ export default function Card(props) {
             <h1>{contestant.name}</h1>
             <p>{contestant.competition}</p>
             <div id="index100">
-            {contestant.competition==="Opius" && <YouTube opts={opts} videoId='iRA82xLsb_w'></YouTube>}
+            {contestant.competition==="Opus" && <YouTube opts={opts} videoId='iRA82xLsb_w'></YouTube>}
             </div>
             <p>Poeng: {contestant.poeng}</p>
           </div>

@@ -11,7 +11,7 @@ let teams = ["turquoise", "yellow", "pink"];
 let persons = [
   { team: "yellow", name: "Torkjell", competition: "Ddakji", poeng: "5/-5" },
   { team: "blue", name: "Marius", competition: "Singstar", poeng: "10" },
-  { team: "pink", name: "Hanne", competition: "Opius", poeng: "-10" },
+  { team: "pink", name: "Hanne", competition: "Opus", poeng: "-10" },
   { team: "yellow", name: "Anders", competition: "Confidence", poeng: "-2" },
   { team: "pink", name: "Julia", competition: "Vodka eller vann", poeng: "2" },
   { team: "pink", name: "Anniken", competition: "Ring of fire", poeng: "-10" },
@@ -43,15 +43,27 @@ const opts = {
 };
 
 function App() {
-  const [hideGame, setHideGame] = useState(1)
+  const [hideGame, setHideGame] = useState("")
+  const [hideGame2, setHideGame2] = useState("")
   const [reveal, setreveal] = useState(0);
   return (
     <div className="App">
-         { hideGame && <div className="cover">
-            <div onClick={()=>{setHideGame("")}} className="coverContent">
+          <div onClick={()=>{setHideGame("hidden")}} className={`cover ${hideGame}`}>
+          <div className="coverContent">
+            <h1>Regler</h1>
+            <p>1. Antall plusspoeng er antall slurker man kan gi ut.(Gjelder lagvis)</p>
+            <p>2. Antall minuspoeng er antall slurker man skal drikke.</p>
+            <p>3. Alle har en konkurranse dedikert til seg man ikke kan delta på.</p>
+            <p>4. Ha det gøy.</p>
+            <p><b>Nå er det tid for å komme seg inn i tracksuitene!</b></p>
+
+            </div>
+          </div>
+          <div onClick={()=>{setHideGame2("hidden")}} className={`cover ${hideGame2}`}> 
+          <div className="coverContent">
             <Cover/>
             </div>
-          </div>}
+          </div>
           
           <div className="points">
           {teams.map((team) => (
@@ -68,7 +80,7 @@ function App() {
           <Card key={person.name} person={person} reveal={reveal} />
         ))}    
       </div>
-      {!hideGame && <div style={{position: "fixed"}}><YouTube classname="youtube" videoId="v9NQYKv2rTg" opts={opts} /></div>}
+      {hideGame2==="hidden" && <div style={{position: "fixed"}}><YouTube classname="youtube" videoId="v9NQYKv2rTg" opts={opts} /></div>}
     </div>
   );
 }

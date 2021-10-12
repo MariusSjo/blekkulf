@@ -203,10 +203,12 @@ h1 {
 .coverContent{
   margin: auto;
   margin-top:20vh;
+  color:blanchedalmond;
 }
 
 .coverContent > img{
   width: 30vw;
+  
 }
 
 .coverTime{
@@ -217,4 +219,10 @@ h1 {
 #introtekst{
   color: white;
   font-size: 40px;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 6s, opacity 6s linear;
 }
